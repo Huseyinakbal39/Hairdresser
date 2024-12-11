@@ -5,6 +5,7 @@ namespace Hairdresser.Controllers
 {
     public class LoginController : Controller
     {
+        DbContext1 dbContext = new DbContext1();
         public IActionResult Index()
         {
             return View();
@@ -29,6 +30,33 @@ namespace Hairdresser.Controllers
 
         // Hoşgeldiniz Sayfası
         public IActionResult Welcome()
+        {
+            return View();
+        }
+
+        public IActionResult Team()
+        {
+            var employees = dbContext.Employees.ToList();
+            return View(employees);//yazarlar parametre koy
+            
+        }
+        
+        public IActionResult TeamAdd()
+        {
+            return View();
+        }
+
+        public IActionResult TeamDelete()
+        {
+            return View();
+        }
+
+        public IActionResult TeamEdit()
+        {
+            return View();
+        }
+
+        public IActionResult TeamDetail()
         {
             return View();
         }

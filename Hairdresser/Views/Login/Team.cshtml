@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Hairdresser.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = null;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="TeamAdd">Yazar Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                <a asp-action="TeamEdit" asp-route-id="@item.Id">Yazar Düzenle</a> |
+                <a asp-action="TeamDetail" asp-route-id="@item.Id">Yazar Detay</a> |
+                <a asp-action="TeamDelete" asp-route-id="@item.Id">Yazar Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
