@@ -27,7 +27,7 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Team" ? "active" : "")" 
-                           asp-controller="Login" asp-action="Team">Team</a>
+                           asp-controller="Team" asp-action="AdminIndex">Team</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Service" ? "active" : "")" 
@@ -40,7 +40,7 @@
                 </ul>
 
                 <div class="d-flex">
-                    <a class="btn btn-login" asp-controller="Login" asp-action="Index">
+                    <a class="btn btn-login" asp-controller="Home" asp-action="Index">
                         <i class="bi bi-person-circle"></i> Log Out
                     </a>
                 </div>

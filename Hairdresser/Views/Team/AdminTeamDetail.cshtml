@@ -1,0 +1,34 @@
+﻿@model Hairdresser.Models.Employee
+
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+    </dl>
+</div>
+@if(Model.Appointments.Count > 0)
+{
+    <ul>
+        @foreach(var worker in Model.Appointments)
+        {
+            <li>@worker.Service</li>
+        }
+    </ul>
+}
+else
+{
+    <div>Yazara ait herhangi bir kitap yok.</div>
+}
