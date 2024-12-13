@@ -17,5 +17,7 @@ namespace Hairdresser.Models
         public int Price { get; set; }
         public string Category { get; set; }
         public TimeSpan Duration { get; set; }
+
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }
