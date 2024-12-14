@@ -8,12 +8,12 @@ namespace Hairdresser.Models
         [Required(ErrorMessage = "Please enter a valid name")]
         [MaxLength(50)]
         [MinLength(2)]
-        [Display(Name = "Customer Name")]
+        [Display(Name = "Employee Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter a valid surname")]
         [MaxLength(50)]
         [MinLength(2)]
-        [Display(Name = "Customer Surname")]
+        [Display(Name = "Employee Surname")]
         public string Surname { get; set; }
         [EmailAddress(ErrorMessage = "Please enter a valid email")]
         public string Email { get; set; }

@@ -30,7 +30,12 @@
         }
 
 body {
-    background-image: url('/images/hairrSaloonDesign.jpg');
-    background-size:cover;
+    overflow: hidden;
+    background-image: url('/images/cetoDesign.png');
+    background-size: cover;
     background-repeat: no-repeat;
+    margin: 0; /* Varsayılan marginleri kaldırır */
+    padding: 0; /* Varsayılan paddingleri kaldırır */
+    height: 100vh; /* Yüksekliği ekran yüksekliğine eşitler */
+    background-position: center; /* Ortalanır */
 }
