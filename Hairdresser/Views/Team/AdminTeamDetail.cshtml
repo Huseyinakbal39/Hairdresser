@@ -54,7 +54,7 @@
         </div>
     </nav>
 <p>
-    <a asp-action="TeamAdd">Add Employee</a>
+    <a asp-action="AdminTeamAdd">Add Employee</a>
 </p>
 <table class="table">
     <thead>
@@ -102,9 +102,9 @@
                 @Html.DisplayFor(modelItem => item.Salary)
             </td>
             <td>
-                <a asp-action="AdminTeamEdit" asp-route-id="@item.Id">Edit Employee</a> |
+                <a asp-action="EmployeeEdit" asp-route-id="@item.Id">Edit Employee</a> |
                 <a asp-action="AdminTeamDetail" asp-route-id="@item.Id">Employee Detail</a> |
-                <a asp-action="AdminTeamDelete" asp-route-id="@item.Id">Delete Employee</a>
+                <a asp-action="EmployeeDelete" asp-route-id="@item.Id">Delete Employee</a>
             </td>
         </tr>
 }
