@@ -29,8 +29,16 @@
                 <input type="password" id="password" name="Password" placeholder="Şifrenizi Girin" required />
             </div>
 
-            <button type="submit">Giriş Yap</button>
+            <button type="submit" class="btn-primary">Giriş Yap</button>
+            
         </form>
+        <form>
+            <button type="button" class="btn-secondary" asp-action="Register">Kayıt Ol</button>
+        </form>
+        <li class="nav-item">
+             <a asp-controller="Login" asp-action="Register">Register</a>
+        </li>
     </div>
+    
 </body>
 </html>

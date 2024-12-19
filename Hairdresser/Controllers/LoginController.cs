@@ -5,7 +5,7 @@ namespace Hairdresser.Controllers
 {
     public class LoginController : Controller
     {
-        
+        DbContext1 dbContext = new DbContext1();
         public IActionResult Index()
         {
             return View();
@@ -30,6 +30,11 @@ namespace Hairdresser.Controllers
 
         // Hoşgeldiniz Sayfası
         public IActionResult Welcome()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
         {
             return View();
         }
