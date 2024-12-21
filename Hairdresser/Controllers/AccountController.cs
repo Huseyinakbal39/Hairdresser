@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hairdresser.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hairdresser.Controllers
 {
