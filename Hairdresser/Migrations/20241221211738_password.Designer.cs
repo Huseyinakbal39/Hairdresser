@@ -4,6 +4,7 @@ using Hairdresser.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hairdresser.Migrations
 {
     [DbContext(typeof(DbContext1))]
-    partial class DbContext1ModelSnapshot : ModelSnapshot
+    [Migration("20241221211738_password")]
+    partial class password
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace Hairdresser.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Hairdresser.Entities.Calisan", b =>
+            modelBuilder.Entity("Hairdresser.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,8 +43,8 @@ namespace Hairdresser.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -62,7 +64,7 @@ namespace Hairdresser.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Calisan");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Hairdresser.Models.User", b =>

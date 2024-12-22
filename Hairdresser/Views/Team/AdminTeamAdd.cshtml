@@ -1,8 +1,4 @@
-﻿@model Hairdresser.Models.Employee
-
-@{
-    Layout = null;
-}
+﻿@model Hairdresser.Entities.Calisan
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,9 +45,7 @@
             </div>
         </div>
     </nav>
-    @*<footer class="bg-light text-center py-3 mt-4">
-        <p>&copy; @DateTime.Now.Year - MyBrand</p>
-    </footer>*@
+
 
     <div class="alert-danger"> @TempData["msj"]</div>
 
@@ -107,7 +101,9 @@
 </html>
 
 
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+ @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+

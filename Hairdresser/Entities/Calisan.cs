@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Hairdresser.Models
+namespace Hairdresser.Entities
 {
-    public class Employee
+    public class Calisan
     {
         [Key]
         public int Id { get; set; }
@@ -24,9 +24,14 @@ namespace Hairdresser.Models
         public string Position { get; set; }
         [Required(ErrorMessage = "Please enter a valid salary")]
         [Display(Name = "Employee Salary")]
-        [Range(1000,100000,ErrorMessage = "Salary must be between 1000-100000")]
+        [Range(1000, 100000, ErrorMessage = "Salary must be between 1000-100000")]
         public int Salary { get; set; }
+
+        [Required]
+        [StringLength(80)]
+        public string Password { get; set; }
         //public ICollection<WorkingHours> WorkingHours { get; set; } // Çalışma saatleri
         //public ICollection<Appointment> Appointments { get; set; } // Çalışanın gerçekleştirdiği randevular
     }
 }
+

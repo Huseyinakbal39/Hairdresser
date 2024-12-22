@@ -24,6 +24,11 @@
         align-items: center;
         color: white;
     }
+    .navbar .btn-register {
+        display: flex;
+        align-items: center;
+        color: white;
+    }
 
         .navbar .btn-login:hover {
             color: gray;
