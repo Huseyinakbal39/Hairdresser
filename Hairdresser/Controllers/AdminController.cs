@@ -75,6 +75,8 @@ namespace Hairdresser.Controllers
                 TempData["msj"] = "Employee could not find";
                 return RedirectToAction("Team");
             }
+            User user = dbContext.Users.SingleOrDefault(x => x.Username.ToLower() == employees.Name.ToLower() && x.Password == employees.Password);
+            dbContext.Users.Remove(user);
             dbContext.Calisan.Remove(employees);
             dbContext.SaveChanges();
             TempData["msj"] = employees.Name + " named employee deleted.";
@@ -111,12 +113,9 @@ namespace Hairdresser.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = dbContext.Users.Where(x => x.Username.ToLower() == e.Name.ToLower() && x.Password == e.Password).ToList();
+                User user = dbContext.Users.SingleOrDefault(x => x.Username.ToLower() == e.Name.ToLower() && x.Password == e.Password);
 
-                if (dbContext.Users.Any(x => x.Username.ToLower() == e.Name.ToLower())&& dbContext.Users.Any(x => x.Password == e.Password))
-                {
-                   
-                }
+                dbContext.Users.Update(user);
                 dbContext.Calisan.Update(e);
                 
                 dbContext.SaveChanges();

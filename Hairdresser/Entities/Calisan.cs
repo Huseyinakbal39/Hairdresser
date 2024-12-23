@@ -30,6 +30,8 @@ namespace Hairdresser.Entities
         [Required]
         [StringLength(80)]
         public string Password { get; set; }
+        [StringLength(80)]
+        public string PreviousPassword { get; set; }
         //public ICollection<WorkingHours> WorkingHours { get; set; } // Çalışma saatleri
         //public ICollection<Appointment> Appointments { get; set; } // Çalışanın gerçekleştirdiği randevular
     }
