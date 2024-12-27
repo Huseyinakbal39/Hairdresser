@@ -13,6 +13,9 @@ namespace Hairdresser.Entities
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Calisan> Calisan { get; set; }
+        public DbSet<Servis> Services  { get; set; }
+        public DbSet<Randevu> Appointments { get; set; }
+
     }
 }
 

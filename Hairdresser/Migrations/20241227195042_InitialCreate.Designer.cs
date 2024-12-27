@@ -4,6 +4,7 @@ using Hairdresser.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hairdresser.Migrations
 {
     [DbContext(typeof(DbContext1))]
-    partial class DbContext1ModelSnapshot : ModelSnapshot
+    [Migration("20241227195042_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +71,7 @@ namespace Hairdresser.Migrations
                         .IsUnique()
                         .HasFilter("[UserId] IS NOT NULL");
 
-                    b.ToTable("Calisan", (string)null);
+                    b.ToTable("Calisan");
                 });
 
             modelBuilder.Entity("Hairdresser.Models.Randevu", b =>
@@ -100,7 +102,7 @@ namespace Hairdresser.Migrations
 
                     b.HasIndex("calisanId");
 
-                    b.ToTable("Appointments", (string)null);
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("Hairdresser.Models.Servis", b =>
@@ -127,7 +129,7 @@ namespace Hairdresser.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Hairdresser.Models.User", b =>
@@ -165,7 +167,7 @@ namespace Hairdresser.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Hairdresser.Entities.Calisan", b =>

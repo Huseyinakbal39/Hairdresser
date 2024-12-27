@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Hairdresser.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hairdresser.Entities
 {
@@ -30,8 +31,11 @@ namespace Hairdresser.Entities
         [Required]
         [StringLength(80)]
         public string Password { get; set; }
-        [StringLength(80)]
-        public string PreviousPassword { get; set; }
+        public int? UserId { get; set; }  // Foreign Key
+        public User? User { get; set; }
+        public ICollection<Randevu>? Appointments { get; set; }
+        //public int UserId { get; set; }
+        //public User User { get; set; } = null!;
         //public ICollection<WorkingHours> WorkingHours { get; set; } // Çalışma saatleri
         //public ICollection<Appointment> Appointments { get; set; } // Çalışanın gerçekleştirdiği randevular
     }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Hairdresser.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hairdresser.Models
 {
@@ -20,6 +21,8 @@ namespace Hairdresser.Models
         [Required]
         [StringLength(50)]
         public string Role { get; set; } = "user";
+
+        public Calisan? Calisan { get; set; }
 
     }
 }
