@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Hairdresser.Models.RandevuList>
+
+
+<div style="text-align: center; margin-top: 20px;">
+    <h1 style="font-size: 36px; font-weight: bold; margin-bottom: 30px;">Appointments</h1>
+</div>
+<table class="table table-hover table-bordered text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.musteriAdi)</th>
+            <th>@Html.DisplayNameFor(model => model.islemAdi)</th>
+            <th>@Html.DisplayNameFor(model => model.calisanAdi)</th>
+            <th>@Html.DisplayNameFor(model => model.randevuTarihi)</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.musteriAdi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.islemAdi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.calisanAdi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.randevuTarihi)</td>
+
+                </tr>
+            }
+                
+            
+        
+    </tbody>
+</table>

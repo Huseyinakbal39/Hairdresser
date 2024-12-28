@@ -1,40 +1,45 @@
 ﻿@model IEnumerable<Hairdresser.Models.Servis>
-<p>
-    <a asp-action="AdminServiceAdd">Add Service</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                <a asp-action="EditService" asp-route-id="@item.Id">Edit Service</a> |
-                <a asp-action="HepsiniSil" asp-route-id="@item.Id">Employee Detail</a> |
-                <a asp-action="DeleteService" asp-route-id="@item.Id">Delete Service</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container mt-4">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-warning btn-sm" asp-action="EditService" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="DeleteService" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Add Service Button -->
+    <div class="d-flex justify-content-center mt-3">
+        <a class="btn btn-primary" asp-action="AdminServiceAdd">Add Service</a>
+    </div>
+</div>

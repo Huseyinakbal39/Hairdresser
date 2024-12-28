@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Hairdresser.Models.Servis>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div style="text-align: center; margin-top: 20px;">
+    <h1 style="font-size: 36px; font-weight: bold; margin-bottom: 30px;">Man</h1>
+</div>
+<table class="table table-hover table-bordered text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Gender.ToLower() == "man")
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

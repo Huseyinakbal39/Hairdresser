@@ -3,6 +3,7 @@ using Hairdresser.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Hairdresser.Controllers
 {
@@ -45,7 +46,11 @@ namespace Hairdresser.Controllers
                 {
                     Username = e.Name,
                     Password = e.Password,
-                    Role = "employee"
+                    Role = "employee",
+                    email = e.Email,
+                    phone = e.PhoneNumber,
+                    UserSurname = e.Surname,
+                    Gender = e.Gender
                 };
                 dbContext.Users.Add(user);
                 dbContext.SaveChanges();
@@ -170,7 +175,11 @@ namespace Hairdresser.Controllers
                 {
                     Username = e.Name,
                     Password = e.Password,
-                    Role = e.Position
+                    Role = e.Position,
+                    email = e.Email,
+                    phone = e.PhoneNumber,
+                    UserSurname = e.Surname,
+                    Gender = e.Gender,
                 };
                 dbContext.Users.Add(user);
                 dbContext.SaveChanges();
@@ -203,10 +212,11 @@ namespace Hairdresser.Controllers
             return View(employees);
         }
 
-        public IActionResult Service()
+        public async Task<IActionResult>  Service()
         {
-            var services = dbContext.Services.ToList();
-            return View(services);
+            ApiResponseController response = new ApiResponseController();
+            List<Servis> servis = await response.GetAllServices();
+            return View(servis);
         }
         public IActionResult AdminServiceAdd()
         {
@@ -216,10 +226,10 @@ namespace Hairdresser.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (dbContext.Services.Any(x => x.Name.ToLower() == s.Name.ToLower()))
+                if (dbContext.Services.Any(x => x.Name.ToLower() == s.Name.ToLower() && x.Gender == s.Gender))
                 {
-                    ModelState.AddModelError(nameof(s.Name), "Service already exists");
-                    View(s);
+                    TempData["msj"] = "Service already exists";
+                    return RedirectToAction("AdminServiceAdd");
                 }
                 dbContext.Services.Add(s);
                 int affectedRowCount = dbContext.SaveChanges();
@@ -292,6 +302,26 @@ namespace Hairdresser.Controllers
             }
             TempData["msj"] = "Update failed!";
             return RedirectToAction("EditService");
+        }
+        public IActionResult Randevular()
+        {
+        
+            List<Randevu> randevu = dbContext.Appointments.ToList();
+            List<RandevuList> randevuList = new List<RandevuList>();
+            foreach (var item in randevu)
+            {
+                randevuList.Add(new RandevuList
+                {
+                    musteriAdi = dbContext.Users.Where(x=> x.Id == item.Id).Select(x => x.Username).FirstOrDefault(),
+                    calisanAdi = dbContext.Calisan.Where(x => x.Id == item.calisanId).Select(x => x.Name).FirstOrDefault(),
+                    islemAdi = dbContext.Services.Where(x => x.Id == item.ServiceId).Select(x => x.Name).FirstOrDefault(),
+                    randevuTarihi = item.AppointmentDate
+                }
+                    );
+            }
+
+
+            return View(randevuList);
         }
 
     }

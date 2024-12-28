@@ -1,57 +1,57 @@
 ﻿@model Hairdresser.Entities.Calisan
+<link rel="stylesheet" href="~/css/form.css?v=@DateTime.Now.Ticks" />
 
 <div class="alert-danger"> @TempData["msj"]</div>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+
+    <hr />
+   <section class="form-container">
+        <h2>Add Employee</h2>
+        <div class="alert alert-danger"> @TempData["msj"]</div>
         <form asp-action="EmployeeEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Surname" class="form-label"></label>
                 <input asp-for="Surname" class="form-control" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Position" class="form-label"></label>
                 <input asp-for="Position" class="form-control" />
                 <span asp-validation-for="Position" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Salary" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Salary" class="form-label"></label>
                 <input asp-for="Salary" class="form-control" />
                 <span asp-validation-for="Salary" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="d-grid">
+                <input type="submit" value="Save" class="btn btn-primary btn-lg" />
             </div>
         </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Team">Back to List</a>
-</div>
+        <div class="text-center mt-3">
+            <a asp-action="Team" class="btn btn-link">Back To List</a>
+        </div>
+    </section>
 
    
 

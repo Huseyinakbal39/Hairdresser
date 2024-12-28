@@ -1,7 +1,106 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceto - Man and Woman Hairdresser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/home.css?v=@DateTime.Now.Ticks" />
+    <style>
+        .hero-section {
+    background-image: url('images/KuaforImmage.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+    </style>
+</head>
+<body>
 
-<div class="text-center">
-    
-</div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Welcome to the Ceto</h1>
+        <p>Expert Service in Men's and Women's Hairdressing</p>
+        <p>As Ceto, we provide service with an understanding that prioritizes customer satisfaction. We offer modern and stylish solutions to both our male and female customers.</p>
+        <a href="#services" class="btn btn-warning btn-lg">Discover Our Services</a>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services container">
+        <div class="text-center mb-5">
+            <h2>Services</h2>
+            <p>Hair Cut , Colour , Care and More</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/Services/Index">
+                        <img src="~/images/haircut.jpg" class="card-img-top" alt="Saç Kesimi">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Hair Cut</h5>
+                        <p class="card-text">Professional haircuts that reflect your style.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/Services/Index">
+                        <img src="/images/hairColor.jpg" class="card-img-top" alt="Saç Boyama">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Hair Colour</h5>
+                        <p class="card-text">Modern and creative color applications.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/Services/Index">
+                        <img src="/images/sacBakim.jpg" class="card-img-top" alt="Saç Bakımı">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Hair Care</h5>
+                        <p class="card-text">Care services that prioritize your hair health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Back to Top Button -->
+    <button class="btn btn-warning back-to-top" id="backToTop">Go up</button>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 Ceto. All Rights Reserved.</p>
+            <p>Contact: <a href="mailto:info@ceto.com">info@ceto.com</a> | Phone: +90 555 123 4567</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+

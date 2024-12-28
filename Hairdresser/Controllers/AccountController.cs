@@ -28,7 +28,7 @@ namespace Hairdresser.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = _databaseContext.Users.SingleOrDefault(x => x.Username.ToLower() == model.Username.ToLower() && x.Password == model.Password);
+                User user = _databaseContext.Users.SingleOrDefault(x => x.email == model.Username && x.Password == model.Password);
                 if (user != null)
                 {
                     if(user.Locked)
@@ -41,7 +41,7 @@ namespace Hairdresser.Controllers
                     claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
                     claims.Add(new Claim(ClaimTypes.Name, user.UserSurname ?? string.Empty));
                     claims.Add(new Claim(ClaimTypes.Role, user.Role));
-                    claims.Add(new Claim("Username", model.Username));
+                    claims.Add(new Claim("Username", user.Username));
 
                     ClaimsIdentity identity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
                     ClaimsPrincipal principal = new ClaimsPrincipal(identity);
@@ -58,6 +58,41 @@ namespace Hairdresser.Controllers
             }
             return View(model);
         }
+        //[AllowAnonymous]
+        //public IActionResult Register()
+        //{
+        //    return View();
+        //}
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public IActionResult Register(RegisterViewModel model)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        if(_databaseContext.Users.Any(x => x.Username.ToLower() == model.Username.ToLower()))
+        //        {
+        //            ModelState.AddModelError(nameof(model.Username), "User is already exists");
+        //            View(model);
+        //        }
+        //        User user = new()
+        //        {
+        //            Username = model.Username,
+        //            Password = model.Password,
+        //        };
+        //        _databaseContext.Users.Add(user);
+        //        int affectedRowCount = _databaseContext.SaveChanges();
+
+        //        if(affectedRowCount == 0)
+        //        {
+        //            ModelState.AddModelError("", "User can not be added");
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction(nameof(Login));
+        //        }
+        //    }
+        //    return View(model);
+        //}
         [AllowAnonymous]
         public IActionResult Register()
         {
@@ -65,44 +100,61 @@ namespace Hairdresser.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Register(RegisterViewModel model)
+        public IActionResult Register(RegisterVM registerVM)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if(_databaseContext.Users.Any(x => x.Username.ToLower() == model.Username.ToLower()))
+
+                User user = new User
                 {
-                    ModelState.AddModelError(nameof(model.Username), "User is already exists");
-                    View(model);
-                }
-                User user = new()
-                {
-                    Username = model.Username,
-                    Password = model.Password,
+                    Username = registerVM.firstName,
+                    UserSurname = registerVM.lastName,
+                    email = registerVM.email,
+                    phone = registerVM.phone,
+                    Password = registerVM.password,
+                    Gender = registerVM.Gender
                 };
                 _databaseContext.Users.Add(user);
-                int affectedRowCount = _databaseContext.SaveChanges();
-
-                if(affectedRowCount == 0)
-                {
-                    ModelState.AddModelError("", "User can not be added");
-                }
-                else
-                {
-                    return RedirectToAction(nameof(Login));
-                }
+                _databaseContext.SaveChanges();
+                return View(nameof(Login));
             }
-            return View(model);
+
+            return View(registerVM);
         }
 
         public IActionResult Profile()
         {
-            return View();
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var idInt = Convert.ToInt32(id);
+            User user = _databaseContext.Users.Find(idInt);
+            return View(user);
         }
 
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync((CookieAuthenticationDefaults.AuthenticationScheme));
             return RedirectToAction(nameof(Login));
+        }
+
+        public IActionResult MyAppointments()
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var idInt = Convert.ToInt32(id);
+            List<Randevu> randevu = _databaseContext.Appointments.Where(x => x.UserID == idInt).ToList();
+            List<Randevularım> randevularım = new List<Randevularım>();
+            foreach (var item in randevu)
+            {
+                randevularım.Add(new Randevularım
+                {
+                    CalisanAdi = _databaseContext.Calisan.Where(x => x.Id == item.calisanId).Select(x => x.Name).FirstOrDefault(),
+                    IslemAdi = _databaseContext.Services.Where(x => x.Id == item.ServiceId).Select(x => x.Name).FirstOrDefault(),
+                    RandevuTarihi = item.AppointmentDate
+                }
+                    ) ;
+            }
+            
+         
+            return View(randevularım);
         }
     }
 }

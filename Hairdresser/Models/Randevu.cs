@@ -7,13 +7,13 @@ namespace Hairdresser.Models
     {
         public int Id { get; set; }
         public int UserID { get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public int calisanId { get; set; }
-        public Calisan Calisan { get; set; }
+        public Calisan? Calisan { get; set; }
 
         public int ServiceId { get; set; }
-        public Servis Service { get; set; }
+        public Servis? Service { get; set; }
 
         public DateTime AppointmentDate { get; set; }
     }

@@ -1,0 +1,14 @@
+﻿@model List<Randevularım>
+<div class="card-group">
+    @foreach(var item in Model)
+    {
+        <div class="card col-3">
+    
+        <div class="card-body">
+          <h5 class="card-title">İşlem - @item.IslemAdi</h5>
+          <p class="card-text"><b>Çalışan Adı : </b> @item.CalisanAdi</p>
+          <p class="card-text"><b>Randevu Tarihi : </b> @item.RandevuTarihi</p>
+        </div>
+      </div>
+    }
+</div>

@@ -33,14 +33,21 @@
         .navbar .btn-login:hover {
             color: gray;
         }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* İçerik kayabilsin */
+}
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     background-image: url('/images/cetoDesign.png');
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 0; /* Varsayılan marginleri kaldırır */
-    padding: 0; /* Varsayılan paddingleri kaldırır */
-    height: 100vh; /* Yüksekliği ekran yüksekliğine eşitler */
-    background-position: center; /* Ortalanır */
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    min-height: 100vh;
 }

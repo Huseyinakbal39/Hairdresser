@@ -34,6 +34,7 @@ namespace Hairdresser.Entities
         public int? UserId { get; set; }  // Foreign Key
         public User? User { get; set; }
         public ICollection<Randevu>? Appointments { get; set; }
+        public string Gender   { get; set; }
         //public int UserId { get; set; }
         //public User User { get; set; } = null!;
         //public ICollection<WorkingHours> WorkingHours { get; set; } // Çalışma saatleri

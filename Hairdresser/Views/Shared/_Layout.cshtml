@@ -6,7 +6,8 @@
     <title>@ViewData["Title"] - Ceto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="~/css/layout.css" rel="stylesheet" />
+    @*<link href="~/css/layout.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/css/layout.css?v=@DateTime.Now.Ticks" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -41,6 +42,10 @@
                                 <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Team" ? "active" : "")" 
                                    asp-controller="Admin" asp-action="Team">Team</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Team" ? "active" : "")" 
+                                   asp-controller="Admin" asp-action="Randevular">Appointments</a>
+                            </li>
                         </ul>
                     }
 
@@ -50,7 +55,24 @@
                     }
                     else
                     {
-                        
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")" 
+                                   asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Services" ? "active" : "")" 
+                                   asp-controller="Services" asp-action="Index">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "BookOnline" ? "active" : "")" 
+                                   asp-controller="Account" asp-action="MyAppointments">Appointments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "BookOnline" ? "active" : "")" 
+                                   asp-controller="BookOnline" asp-action="Index">Book Online</a>
+                            </li>
+                        </ul>   
                     }
                     <div class="d-flex">
                         <a class="btn btn-register" asp-controller="Account" asp-action="Profile">
@@ -77,18 +99,8 @@
                             <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Services" ? "active" : "")" 
                                asp-controller="Services" asp-action="Index">Services</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Team" ? "active" : "")" 
-                               asp-controller="Team" asp-action="Index">Team</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Contact" ? "active" : "")" 
-                               asp-controller="Contact" asp-action="Index">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "BookOnline" ? "active" : "")" 
-                               asp-controller="BookOnline" asp-action="Index">Book Online</a>
-                        </li>
+                       
+                        
                     </ul>
                     <div class="d-flex">
                         <a class="btn btn-register" asp-controller="Account" asp-action="Register">

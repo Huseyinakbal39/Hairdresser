@@ -1,0 +1,57 @@
+﻿section {
+    overflow: hidden;
+    background-image: url('/images/cetoDesign.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0; /* Varsayılan marginleri kaldırır */
+    padding: 0; /* Varsayılan paddingleri kaldırır */
+    height: 100vh; /* Yüksekliği ekran yüksekliğine eşitler */
+    background-position: center; /* Ortalanır */
+}
+
+.hero-section {
+    background-image: url('images/KuaforImmage.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.services {
+    padding: 50px 0;
+    /*         background-image: url('images/cetoDesign.png');*/
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+    .services .card {
+        transition: transform 0.3s;
+    }
+
+        .services .card:hover {
+            transform: scale(1.05);
+        }
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+    .footer a {
+        color: #ffcc00;
+    }
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
